@@ -13,7 +13,7 @@
 
     <arg value="sp" />
     <arg name="colors" />
-    <arg name="extensions" value="php,inc,module,theme" />
+    <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>
     <arg name="report" value="full" />
     <arg name="report" value="summary" />
     <arg name="report" value="source" />
