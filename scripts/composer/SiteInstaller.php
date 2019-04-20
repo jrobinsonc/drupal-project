@@ -1,20 +1,21 @@
 <?php
 
-/**
- * @file
- * Contains \DrupalProject\composer\SiteInstaller.
- */
-
 namespace DrupalProject\composer;
 
 use Composer\Script\Event;
-use Composer\Semver\Comparator;
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
-use Webmozart\PathUtil\Path;
 
-class SiteInstaller
-{
+/**
+ * Site installer.
+ *
+ * @package DrupalProject\composer
+ * @author Jose Robinson <hi@joserobinson.com>
+ * @copyright 2019 Jose Robinson
+ * @license GPL-2.0
+ * @since 1.0.0
+ */
+class SiteInstaller {
   /**
    * Drupal root directory path.
    *
@@ -43,20 +44,26 @@ class SiteInstaller
    */
   const REQUIRED_DIRS_PERMS = 0775;
 
-  private static function getFs()
-  {
-    static $filesystem = null;
+  /**
+   * @return Symfony\Component\Filesystem\Filesystem
+   */
+  private static function getFs() {
+    static $filesystem = NULL;
 
-    if (null === $filesystem) {
+    if (NULL === $filesystem) {
       $filesystem = new Filesystem();
     }
 
     return $filesystem;
   }
 
-  private static function checkRequiredDirs()
-  {
-    self::$event->getIO()->write('  - Checking required directories...', false);
+  /**
+   * Check required directories and creates them if they don't exist.
+   *
+   * @return null
+   */
+  private static function checkRequiredDirs() {
+    self::$event->getIO()->write('  - Checking required directories...', FALSE);
 
     $filesystem = self::getFs();
 
@@ -72,8 +79,12 @@ class SiteInstaller
     self::$event->getIO()->overwrite('  ✓ Checking required directories.  ');
   }
 
-  public static function init(Event $event)
-  {
+  /**
+   * Entrypoint for installer.
+   *
+   * @return null
+   */
+  public static function init(Event $event) {
     $drupalFinder = new DrupalFinder();
     $drupalFinder->locateRoot(getcwd());
 
@@ -84,11 +95,13 @@ class SiteInstaller
     self::$event->getIO()->write('★ Running installer:');
 
     try {
-        self::checkRequiredDirs();
-    } catch (\Throwable $th) {
-        $event->getIO()->writeError('<error>✗ Error: ' . $th->getMessage() . '</error>');
+      self::checkRequiredDirs();
+    }
+    catch (\Throwable $th) {
+      $event->getIO()->writeError('<error>✗ Error: ' . $th->getMessage() . '</error>');
     }
 
     self::$event->getIO()->write('');
   }
+
 }
