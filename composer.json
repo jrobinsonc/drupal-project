@@ -41,22 +41,17 @@
     },
     "autoload": {
         "classmap": [
-            "scripts/composer/ScriptHandler.php"
+            "scripts/composer/SiteInstaller.php"
         ],
         "files": ["load.environment.php"]
     },
     "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
+        "install-site": "DrupalProject\\composer\\SiteInstaller::init",
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "composer install-site"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "composer install-site"
         ]
     },
     "extra": {
