@@ -58,12 +58,27 @@ class SiteInstaller {
   }
 
   /**
+   * @see https://getcomposer.org/apidoc/master/Composer/IO/IOInterface.html
+   *
+   * @return Composer\IO\IOInterface
+   */
+  private static function getIO() {
+    static $io = NULL;
+
+    if (NULL === $io) {
+      $io = self::$event->getIO();
+    }
+
+    return $io;
+  }
+
+  /**
    * Check required directories and creates them if they don't exist.
    *
    * @return null
    */
   private static function checkRequiredDirs() {
-    self::$event->getIO()->write('  - Checking required directories...', FALSE);
+    self::getIO()->write('  - Checking required directories...', FALSE);
 
     $filesystem = self::getFs();
 
@@ -76,7 +91,7 @@ class SiteInstaller {
       }
     }
 
-    self::$event->getIO()->overwrite('  ✓ Checking required directories.  ');
+    self::getIO()->overwrite('  ✓ Checking required directories.  ');
   }
 
   /**
@@ -91,17 +106,17 @@ class SiteInstaller {
     self::$drupalRoot = $drupalFinder->getDrupalRoot();
     self::$event = $event;
 
-    self::$event->getIO()->write('');
-    self::$event->getIO()->write('★ Running installer:');
+    self::getIO()->write('');
+    self::getIO()->write('★ Running installer:');
 
     try {
       self::checkRequiredDirs();
     }
     catch (\Throwable $th) {
-      $event->getIO()->writeError('<error>✗ Error: ' . $th->getMessage() . '</error>');
+      self::getIO()->writeError('<error>✗ Error: ' . $th->getMessage() . '</error>');
     }
 
-    self::$event->getIO()->write('');
+    self::getIO()->write('');
   }
 
 }
