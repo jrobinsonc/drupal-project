@@ -70,10 +70,9 @@
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
         "drupal-scaffold": {
-            "initial": {
-                ".editorconfig": "../.editorconfig",
-                ".gitattributes": "../.gitattributes"
-            }
+            "excludes": [
+                "web.config"
+            ]
         }
     }
 }
