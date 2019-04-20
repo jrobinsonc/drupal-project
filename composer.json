@@ -29,6 +29,12 @@
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+        "drupal/coder": "^8.3",
+        "phpmd/phpmd" : "@stable",
+        "phpcompatibility/php-compatibility": "*",
+        "squizlabs/php_codesniffer": "*",
+        "sirbrillig/phpcs-variable-analysis": "^2.6",
         "webflo/drupal-core-require-dev": "^8.6.0"
     },
     "conflict": {
