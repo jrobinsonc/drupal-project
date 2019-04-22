@@ -34,8 +34,8 @@ class SiteInstaller {
    * Required directories.
    */
   const REQUIRED_DIRS = [
-    'web/themes/custom',
-    'web/modules/custom',
+    'themes/custom',
+    'modules/custom',
     'sites/default/files',
   ];
 
