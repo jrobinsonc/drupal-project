@@ -10,18 +10,26 @@
 		handled better by PHPCS and rules which have too many false positives
 		in a typical Drupal codebase.
 	</description>
+
 	<rule ref="rulesets/codesize.xml">
 		<exclude name="ExcessiveMethodLength" />
 	</rule>
+
 	<rule ref="rulesets/controversial.xml/Superglobals" />
+
 	<rule ref="rulesets/design.xml" />
+
 	<rule ref="rulesets/unusedcode.xml">
 		<exclude name="UnusedFormalParameter" />
 	</rule>
-  <rule ref="rulesets/naming.xml" />
-  <rule ref="rulesets/naming.xml/ShortMethodName">
+
+  <rule ref="rulesets/naming.xml">
+    <exclude name="ShortVariable" />
+  </rule>
+  <rule ref="rulesets/naming.xml/ShortVariable">
     <properties>
       <property name="minimum" value="2" />
     </properties>
   </rule>
+
 </ruleset>
