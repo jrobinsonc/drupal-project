@@ -22,3 +22,23 @@
 
 # Ignore .env files as they are personal
 /.env
+
+# Ignore auto-generated files.
+# You can remove files from here if you need to update and keep them tracked.
+web/.csslintrc
+web/.editorconfig
+web/.eslintignore
+web/.eslintrc.json
+web/.gitattributes
+web/.ht.router.php
+web/.htaccess
+web/autoload.php
+web/index.php
+web/robots.txt
+web/sites/default/default.services.yml
+web/sites/default/default.settings.php
+web/sites/development.services.yml
+web/sites/example.settings.local.php
+web/sites/example.sites.php
+web/update.php
+web/web.config
