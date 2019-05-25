@@ -47,18 +47,20 @@
         "sort-packages": true
     },
     "autoload": {
-        "classmap": [
-            "scripts/composer/SiteInstaller.php"
-        ],
+        "psr-4": {
+            "DrupalProject\\": "./scripts"
+        },
         "files": ["load.environment.php"]
     },
     "scripts": {
-        "install-site": "DrupalProject\\composer\\SiteInstaller::init",
+        "install-site": "DrupalProject\\composer\\SiteInstaller::run",
         "post-install-cmd": [
-            "composer install-site"
+            "@composer drupal:scaffold",
+            "@composer install-site"
         ],
         "post-update-cmd": [
-            "composer install-site"
+            "@composer drupal:scaffold",
+            "@composer install-site"
         ]
     },
     "extra": {
@@ -78,6 +80,7 @@
         },
         "drupal-scaffold": {
             "excludes": [
+                ".editorconfig",
                 "web.config"
             ]
         }
