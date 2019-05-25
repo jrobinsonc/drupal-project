@@ -53,6 +53,9 @@
     },
     "scripts": {
         "install-site": "DrupalProject\\composer\\SiteInstaller::run",
+        "phpcs": "./vendor/bin/phpcs --standard=phpcs.xml ./scripts",
+        "phpcbf": "./vendor/bin/phpcbf --standard=phpcs.xml ./scripts",
+        "phpmd": "./vendor/bin/phpmd ./scripts text phpmd.xml",
         "post-install-cmd": [
             "@composer drupal:scaffold",
             "@composer install-site"
